@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  width: 100w;
+}
+header {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  font-size: 30px;
+  color: palevioletred;
+}
+.heading {
+  color: palevioletred;
+  text-align: center;
+}
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+main form {
+  display: flex;
+  justify-content: center;
+}
+form input[type="text"] {
+  flex-grow: 1;
+}
+input[type="text"] {
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 20px;
+}
+.submit {
+  background-color: palevioletred;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 500px;
+  /* border-radius: 3px; */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.recipe-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px;
+  /* width: 80%; */
+  margin: 15px auto;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  max-width: 350px;
+  background-color: white;
+  /* max-height: 400px; */
+  /* min-height: 400px; */
+}
+.recipe img {
+  height: 300px;
+}
+.recipe p {
+  margin-top: 4px;
+  text-align: centre;
+  font-size: 15px;
+  font-weight: 500px;
+}
+
+.recipe button {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px auto;
+  background-color: palevioletred;
+  color: white;
+  border: none;
+}
+.recipe-detail {
+  display: none;
+  position: fixed;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 60%;
+  font-size: 20px;
+  border-radius: 6px;
+  color: white;
+  transition: all 0.5s ease-in-out;
+  overflow-y: scroll;
+}
+
+.btn-close {
+  background-color: palevioletred;
+  border: none;
+  padding: 7px;
+  border-radius: 3px;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: white;
+}
+.recipe-content {
+  padding: 20px;
+}
+
+.recipe-heading {
+  text-align: center;
+  /* text-decoration: underline; */
+  text-transform: uppercase;
+}
+.ingre-heading,
+.instr-heading {
+  text-align: center;
+  text-decoration: underline;
+}
+.recipe-content p {
+  white-space: pre-line;
+  line-height: 30px;
+}
