@@ -47,11 +47,12 @@ const API = async (name) => {
     console.log(meal);
     const recipeDiv = document.createElement("div");
     recipeDiv.classList.add("recipe");
-    recipeDiv.innerHTML = `<img src="${meal.strMealThumb}"><h3>${meal.strMeal}</h3>
+    recipeDiv.innerHTML = `<img src="${meal.strMealThumb}">
+    <h3>${meal.strMeal}</h3>
         <p>Category:${meal.strCategory}</p>
 
         `;
-    recipeContainer.appendChild(recipeDiv);
+
     const button = document.createElement("button");
     button.textContent = "Recipe Detail";
     recipeDiv.appendChild(button);
@@ -64,37 +65,38 @@ const API = async (name) => {
       openRecipe(meal);
     });
 
-    const openRecipe = (meal) => {
-      console.log("inside openrecipe");
-
-      let ingredientsList = "";
-      for (let i = 1; i <= 20; i++) {
-        const ingredients = meal[`strIngredient${i}`];
-        if (ingredients) {
-          const measurement = meal[`strMeasure${i}`];
-          ingredientsList += `<li>  ${measurement}${ingredients}</li>`;
-        } else {
-          break;
-        }
-        return ingredientsList;
-
-        // console.log(ingredients);
-      }
-
-      recipeContentDiv.innerHTML = `<h2 class="recipe-heading">${meal.strMeal}</h2>
-      <h4 class="ingre-heading">Ingredients:</h4>
-      <ul>${ingredientsList}</ul>
-      <div>
-      <h4 class="instr-heading">Instructions:</h4>
-      <p>${meal.strInstructions}</p>
-      </div>
-      
-            `;
-
-      recipeContentDiv.parentElement.style.display = "block";
-    };
-    closeBtn.addEventListener("click", function () {
-      recipeContentDiv.parentElement.style.display = "none";
-    });
+    recipeContainer.appendChild(recipeDiv);
   });
 };
+// console.log("inside openrecipe");
+const getIngredients = (meal) => {
+  let ingredientsList = "";
+  for (let i = 1; i <= 20; i++) {
+    const ingredients = meal[`strIngredient${i}`];
+    if (ingredients) {
+      const measurement = meal[`strMeasure${i}`];
+      ingredientsList += `<li>  ${measurement}${ingredients}</li>`;
+    } else {
+      break;
+    }
+
+    // console.log(ingredients);
+  }
+  return ingredientsList;
+};
+const openRecipe = (meal) => {
+  recipeContentDiv.innerHTML = `<h2 class="recipe-heading">${meal.strMeal}</h2>
+  <h4 class="ingre-heading">Ingredients:</h4>
+  <ul>${getIngredients(meal)}</ul>
+  <div>
+  <h4 class="instr-heading">Instructions:</h4>
+  <p>${meal.strInstructions}</p>
+  </div>
+  
+  `;
+
+  recipeContentDiv.parentElement.style.display = "block";
+};
+closeBtn.addEventListener("click", function () {
+  recipeContentDiv.parentElement.style.display = "none";
+});
