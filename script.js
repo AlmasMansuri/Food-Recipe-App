@@ -47,8 +47,8 @@ const API = async (name) => {
     console.log(meal);
     const recipeDiv = document.createElement("div");
     recipeDiv.classList.add("recipe");
-    recipeDiv.innerHTML = `<img src="${meal.strMealThumb}">
-        <p>${meal.strCategory}</p>
+    recipeDiv.innerHTML = `<img src="${meal.strMealThumb}"><h3>${meal.strMeal}</h3>
+        <p>Category:${meal.strCategory}</p>
 
         `;
     recipeContainer.appendChild(recipeDiv);
@@ -68,7 +68,7 @@ const API = async (name) => {
       console.log("inside openrecipe");
 
       let ingredientsList = "";
-      for (let i = 0; i <= 20; i++) {
+      for (let i = 1; i <= 20; i++) {
         const ingredients = meal[`strIngredient${i}`];
         if (ingredients) {
           const measurement = meal[`strMeasure${i}`];
